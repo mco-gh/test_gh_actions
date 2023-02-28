@@ -1,1 +1,1 @@
-/Users/marccohen/p/test_gh_actions/common/hello-http/setup.sh
+../../../../common/hello-http/setup.sh
