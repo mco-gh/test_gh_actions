@@ -21,8 +21,7 @@ jobs:
     - name: Copy script files
       shell: bash
       run: >
-        for i in */functions/* */run/*
-        do
+        for i in */functions/* */run/*; do
           echo copying $i
         done
 
