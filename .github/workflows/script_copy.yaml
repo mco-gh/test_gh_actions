@@ -1,0 +1,27 @@
+name: script-copy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  script-copy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Copy script files
+      shell: bash
+      run echo test by Marc
+
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Apply script-copy workflow changes
