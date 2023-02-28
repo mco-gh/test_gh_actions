@@ -20,7 +20,7 @@ jobs:
 
     - name: Copy script files
       shell: bash
-      run echo test by Marc
+      run: echo test by Marc
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
