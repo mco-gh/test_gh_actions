@@ -20,7 +20,11 @@ jobs:
 
     - name: Copy script files
       shell: bash
-      run: echo test by Marc
+      run: >
+        for i in */functions/* */run/*
+        do
+          echo copying $i
+        done
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
