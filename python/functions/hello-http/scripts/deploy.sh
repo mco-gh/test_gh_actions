@@ -14,19 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export PROJECT_ID=$(gcloud config get-value project)
-export REGION=us-central1
-export RUNTIME=python310
-export CANON_FUNCTION_NAME=hello-http
-export FUNCTION_NAME=hello_http
-export SERVICE_TYPE=functions
-export SERVICE_NAME=$CANON_FUNCTION_NAME-$SERVICE_TYPE-$RUNTIME
+source $(dirname $0)/config.sh
 
-export TEMPLATE_DIR="/Users/$USER/Library/Application Support/cloud-code/custom-templates"
-export REPO_NAME=https-github-com-meteatamel-cloud-code-custom-templates-git-1
-
-# Copy scripts from common dir to app dir (if not already there).
-if [[ ! -f setup.sh ]]
+if [ "$SERVICE_TYPE" = "functions" ]
 then
-  cp "$TEMPLATE_DIR/$REPO_NAME/common/$CANON_FUNCTION_NAME"/* .
+  echo "Deploy $SERVICE_NAME to $REGION"
+  gcloud functions deploy $SERVICE_NAME \
+    --allow-unauthenticated \
+    --entry-point $FUNCTION_NAME \
+    --gen2 \
+    --region $REGION \
+    --runtime $RUNTIME \
+    --source . \
+    --trigger-http
+elif [ "$SERVICE_TYPE" = "run" ]
+then
+  echo "Deploy $SERVICE_NAME to $REGION"
+  gcloud run deploy $SERVICE_NAME \
+    --allow-unauthenticated \
+    --region $REGION \
+    --source .
 fi
