@@ -23,8 +23,8 @@ jobs:
     - name: Copy script files
       shell: bash
       run: >
-        for i in common/*/*; do
-          # cp $i python/hello-html/scripts
+        for i in common/*/*.sh; do
+          cp $i python/hello-html/scripts
         done
 
     - uses: stefanzweifel/git-auto-commit-action@v4
