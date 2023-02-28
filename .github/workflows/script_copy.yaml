@@ -24,7 +24,7 @@ jobs:
       shell: bash
       run: >
         for i in common/*/*.sh; do
-          cp $i python/hello-html/scripts
+          cp $i python/functions/hello-html/scripts
         done
 
     - uses: stefanzweifel/git-auto-commit-action@v4
