@@ -1,1 +1,0 @@
-../../../../common/hello-http/setup.sh

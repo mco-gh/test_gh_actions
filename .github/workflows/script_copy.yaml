@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'common/*/*'
 
 jobs:
   script-copy:
@@ -21,8 +23,8 @@ jobs:
     - name: Copy script files
       shell: bash
       run: >
-        for i in */functions/* */run/*; do
-          echo copying $i
+        for i in common/*/*; do
+          # cp $i python/hello-html/scripts
         done
 
     - uses: stefanzweifel/git-auto-commit-action@v4
